@@ -3,6 +3,7 @@ package com.study.kopringcrud.api
 import com.study.kopringcrud.api.dto.CRUDDto
 import com.study.kopringcrud.application.CRUDService
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PatchMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -30,5 +31,10 @@ class CRUDController(
     @GetMapping("/read/{id}")
     fun readById(@PathVariable id: Long): CRUDDto {
         return crudService.readById(id)
+    }
+
+    @PatchMapping("/update")
+    fun update(@RequestBody dto: CRUDDto) {
+        crudService.update(dto)
     }
 }

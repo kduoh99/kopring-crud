@@ -14,8 +14,13 @@ class CRUDEntity(
     val id: Long? = null,
 
     @Column(nullable = false)
-    val title: String,
+    var title: String,
 
     @Column(nullable = false)
-    val content: String
-)
+    var content: String
+) {
+    fun update(title: String, content: String){
+        this.title = title
+        this.content = content
+    }
+}
