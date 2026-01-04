@@ -2,6 +2,7 @@ package com.study.kopringcrud.api
 
 import com.study.kopringcrud.api.dto.CRUDDto
 import com.study.kopringcrud.application.CRUDService
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PatchMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -36,5 +37,10 @@ class CRUDController(
     @PatchMapping("/update")
     fun update(@RequestBody dto: CRUDDto) {
         crudService.update(dto)
+    }
+
+    @DeleteMapping("/delete/{id}")
+    fun delete(@PathVariable id: Long) {
+        crudService.deleteById(id)
     }
 }

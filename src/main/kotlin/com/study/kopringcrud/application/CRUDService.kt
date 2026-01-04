@@ -47,4 +47,8 @@ class CRUDService(
         )
         crudRepository.save(crudEntity)
     }
+
+    fun deleteById(id: Long) {
+        crudRepository.deleteById(id)
+    }
 }
