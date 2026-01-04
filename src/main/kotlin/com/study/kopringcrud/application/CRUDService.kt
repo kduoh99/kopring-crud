@@ -16,7 +16,25 @@ class CRUDService(
         )
     }
 
+    private fun toDto(crudEntity: CRUDEntity): CRUDDto {
+        return CRUDDto(
+            id = crudEntity.id!!,
+            title = crudEntity.title,
+            content = crudEntity.content
+        )
+    }
+
     fun create(body: CRUDDto) {
         crudRepository.save(toEntity(body))
+    }
+
+    fun readAll(): List<CRUDDto> {
+        return crudRepository.findAll().map {
+            toDto(it)
+        }
+    }
+
+    fun readById(id: Long): CRUDDto {
+        return toDto(crudRepository.findById(id).get())
     }
 }

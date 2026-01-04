@@ -2,6 +2,8 @@ package com.study.kopringcrud.api
 
 import com.study.kopringcrud.api.dto.CRUDDto
 import com.study.kopringcrud.application.CRUDService
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
@@ -18,5 +20,15 @@ class CRUDController(
     @PostMapping("/create")
     fun create(@RequestBody body: CRUDDto) {
         crudService.create(body)
+    }
+
+    @GetMapping("/read")
+    fun readAll(): List<CRUDDto> {
+        return crudService.readAll()
+    }
+
+    @GetMapping("/read/{id}")
+    fun readById(@PathVariable id: Long): CRUDDto {
+        return crudService.readById(id)
     }
 }
